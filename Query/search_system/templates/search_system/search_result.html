@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+</head>
+
+<style type="text/css">
+    body{
+       margin-left:50px;
+       padding-top:50px;
+       padding-left:250px;
+       padding-right:250px;
+    }
+    input.container{
+       width: 300px;
+       vertical-align: middle;
+       position: relative;
+
+     div.search{
+       padding-botton:20px;
+     }
+}
+
+</style>
+
+<body>
+{% if input_empty == 0 %}
+    <h3>Sorry. Please input query.</h3>
+{% elif article_dict is None %}
+    <h3>Sorry. Can not find any results. Please try to use other keywords.</h3>
+{% else %}
+<h1>Query result:</h1>
+{% for article,summary in article_dict.items %}
+    <a href="{% url 'searchpage:article_page' article.id %}">{{ article.title }}</a>
+    <br/>
+<p> {% autoescape off %}
+          {{ summary }}
+{% endautoescape %} </p>
+{% endfor%}
+{% endif%}
+
+</body>
+</html>

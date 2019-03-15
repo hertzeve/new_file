@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search_page</title>
+</head>
+
+<style type="text/css">
+div.box{
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+}
+h1.title{
+  font-size:37pt;
+  color:#180e41
+}
+input.search{
+  height:47px;
+  width:570px;
+  background: #ffffff;
+  font-size:15pt;
+  color: #000000;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 45px;
+  border:0.7px solid #bfbfbf;
+  padding-left:17px;
+  padding-right:17px;
+  outline:none;
+}
+input.search:hover{
+  background: #e8eaed;
+}
+input.search:active{
+  outline:none
+}
+
+
+}
+
+</style>
+
+<body>
+<div class="box">
+    <h1 class="title">Double-H Query System</h1>
+    <form action="{% url 'searchpage:search_result' %}" method="post">
+
+        {% csrf_token %}
+            <input type="text" class="search" name="input_query" placeholder="input your query">
+            <br>
+            <br>
+            <label>
+            <input type="radio" name="which_model" value="1" checked>Boolean Query</label>
+            <label>
+            <input type="radio" name="which_model" value="2">Rank Query</label>
+            <input type="submit" value="Search" >
+
+    </form>
+
+
+</div>
+
+
+
+</body>
+</html>
